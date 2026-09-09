@@ -341,7 +341,29 @@ Item {
                         Layout.fillWidth: true
 
                         Button {
+                            id: backButton
+                            implicitWidth: 110
+                            implicitHeight: 48
                             text: "Back"
+                            flat: true
+                            hoverEnabled: true
+
+                            contentItem: Text {
+                                text: backButton.text
+                                color: backButton.hovered ? "#F4F1E8" : "#98A2B3"
+                                font.pixelSize: 14
+                                font.weight: Font.DemiBold
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
+
+                            background: Rectangle {
+                                radius: 12
+                                color: backButton.hovered ? "#1A222C" : "transparent"
+                                border.width: 1
+                                border.color: "#303A46"
+                            }
+
                             onClicked: setupScreen.backRequested()
                         }
 

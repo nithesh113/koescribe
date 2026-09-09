@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from koescribe.controllers.cuda_controller import CudaController
+from koescribe.controllers.dictation_controller import DictationController
 from koescribe.controllers.microphone_controller import MicrophoneController
 from koescribe.controllers.setup_controller import SetupController
 from PySide6.QtCore import QUrl
@@ -28,6 +29,7 @@ def main() -> int:
     setup_controller = SetupController()
     microphone_controller = MicrophoneController()
     cuda_controller = CudaController()
+    dictation_controller = DictationController()
 
     context = engine.rootContext()
     context.setContextProperty("setupController", setup_controller)
@@ -36,6 +38,9 @@ def main() -> int:
         microphone_controller,
     )
     context.setContextProperty("cudaController", cuda_controller)
+    context.setContextProperty("dictationController", dictation_controller)
+
+    app.aboutToQuit.connect(dictation_controller.shutdown)
 
     qml_file = package_directory / "qml" / "Main.qml"
     engine.load(QUrl.fromLocalFile(str(qml_file)))

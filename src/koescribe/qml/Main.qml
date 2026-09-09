@@ -211,37 +211,18 @@ ApplicationWindow {
             }
         }
 
-        ColumnLayout {
+        MainDictationPage {
             visible: root.mainStarted
-            width: Math.min(620, root.width - 100)
-            anchors.centerIn: parent
-            spacing: 18
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: topNavigation.bottom
+            anchors.bottom: parent.bottom
+            anchors.topMargin: 8
 
-            Text {
-                Layout.fillWidth: true
-                text: "KoeScribe is ready"
-                color: "#F4F1E8"
-                font.pixelSize: 36
-                font.weight: Font.Bold
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            Text {
-                Layout.fillWidth: true
-                text: "The main dictation screen is our next step."
-                color: "#98A2B3"
-                font.pixelSize: 16
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            Button {
-                Layout.alignment: Qt.AlignHCenter
-                text: "Run setup again"
-                onClicked: {
-                    setupController.resetSetup()
-                    root.mainStarted = false
-                    root.setupStarted = true
-                }
+            onSettingsRequested: {
+                setupController.resetSetup()
+                root.mainStarted = false
+                root.setupStarted = true
             }
         }
     }
