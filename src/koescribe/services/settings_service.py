@@ -6,15 +6,14 @@ from typing import Any
 
 from platformdirs import user_config_dir
 
+from koescribe.models.settings import AppSettings
+
 
 class SettingsService:
     def __init__(self) -> None:
-        self.path = (
-            Path(user_config_dir("KoeScribe", "KoeScribe"))
-            / "settings.json"
-        )
+        self.path = Path(user_config_dir("KoeScribe", "KoeScribe")) / "settings.json"
 
-    def load(self) -> dict[str, Any]:
+    def load(self) -> AppSettings:
         if not self.path.is_file():
             return {}
         try:
@@ -23,7 +22,7 @@ class SettingsService:
         except (OSError, ValueError):
             return {}
 
-    def save(self, settings: dict[str, Any]) -> None:
+    def save(self, settings: AppSettings | dict[str, Any]) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         temporary = self.path.with_suffix(".tmp")
         temporary.write_text(

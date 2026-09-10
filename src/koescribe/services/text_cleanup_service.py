@@ -4,17 +4,9 @@ import json
 import os
 import urllib.error
 import urllib.request
-from dataclasses import asdict, dataclass
 from typing import Any
 
-
-@dataclass
-class CleanupResult:
-    text: str
-    model_id: str
-
-    def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+from koescribe.models.cleanup import CleanupResult
 
 
 class TextCleanupService:

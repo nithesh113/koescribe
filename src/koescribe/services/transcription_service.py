@@ -1,24 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from koescribe.models.transcription import TranscriptionResult
 from koescribe.services.cuda_service import CudaService
 from koescribe.services.whisper_service import WhisperService
-
-
-@dataclass
-class TranscriptionResult:
-    text: str
-    language: str
-    language_probability: float
-    duration: float
-    device: str
-    compute_type: str
-
-    def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
 
 
 class NoSpeechDetectedError(RuntimeError):
