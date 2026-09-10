@@ -72,6 +72,7 @@ Item {
                     implicitHeight: 42
                     text: "Settings"
                     hoverEnabled: true
+                    enabled: !dictationController.transcribing
 
                     contentItem: Text {
                         text: settingsButton.text
@@ -261,9 +262,17 @@ Item {
 
                         Text {
                             Layout.fillWidth: true
-                            text: "Latest transcription"
+                            text: "Final transcription"
                             color: "#F4F1E8"
                             font.pixelSize: 15
+                            font.weight: Font.DemiBold
+                        }
+
+                        Text {
+                            visible: dictationController.cleanupUsed
+                            text: "LM Studio polished"
+                            color: "#79D8CE"
+                            font.pixelSize: 11
                             font.weight: Font.DemiBold
                         }
 
@@ -302,6 +311,16 @@ Item {
                                           ? "#20564F"
                                           : "#222C37"
                         }
+                    }
+
+                    Text {
+                        Layout.fillWidth: true
+                        visible: dictationController.cleanupWarning !== ""
+                        text: "LM Studio cleanup was skipped; showing raw Whisper text. "
+                              + dictationController.cleanupWarning
+                        color: "#C7A96B"
+                        font.pixelSize: 11
+                        elide: Text.ElideRight
                     }
                 }
             }
