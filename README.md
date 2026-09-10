@@ -1,5 +1,28 @@
 # KoeScribe
 
+<p align="center">
+  <img
+    src="src/koescribe/qml/assets/koescribe-icon.png"
+    alt="KoeScribe logo"
+    width="140"
+  />
+</p>
+
+<h1 align="center">KoeScribe</h1>
+
+<p align="center">
+  Fast, private, local-first voice dictation for your desktop.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.13+-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/UI-PySide6-41CD52?logo=qt&logoColor=white" alt="PySide6">
+  <img src="https://img.shields.io/badge/AI-faster--whisper-20B8AE" alt="faster-whisper">
+  <img src="https://img.shields.io/badge/Local_AI-LM_Studio-6C63FF" alt="LM Studio">
+  <img src="https://img.shields.io/badge/Linux-Fedora-51A2DA?logo=fedora&logoColor=white" alt="Fedora">
+  <img src="https://img.shields.io/badge/Status-Alpha-C7A96B" alt="Alpha">
+</p>
+
 **Private, local-first voice dictation for the desktop.**
 
 KoeScribe is an open-source desktop application that turns natural speech into
@@ -23,6 +46,20 @@ grammar, and formatting.
 - Use LM Studio optionally—basic transcription must work without it.
 - Build a polished native desktop experience with Python and Qt Quick/QML.
 
+
+## Screenshots
+
+### Welcome
+
+![KoeScribe welcome screen](docs/images/welcome-screen.png)
+
+### Guided setup
+
+![KoeScribe setup wizard](docs/images/setup-screen.png)
+
+### Local dictation
+
+![KoeScribe dictation screen](docs/images/dictation-screen.png)
 ## Current progress
 
 ### Completed
